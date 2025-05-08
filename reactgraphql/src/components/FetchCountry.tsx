@@ -23,7 +23,6 @@ interface Continent {
   code: string;
   countries: Country[];
 }
-
 const QUERY = `
   query GetQueryInfo {
     continents {
@@ -79,21 +78,21 @@ const Continents: React.FC = () => {
     fetchContinents();
   }, []);
 
-  if (loading) return <p>載入中...</p>;
-  if (error) return <p>錯誤：{error}</p>;
+  if (loading) return <p>Loading...</p>;
+  if (error) return <p>Error：{error}</p>;
 
   return (
     <div>
-      <h1>🌍 洲別資訊</h1>
+      <h1>🌍 Information of Contient</h1>
       {data?.map((continent) => (
         <div key={continent.code} style={{ marginBottom: '2rem' }}>
           <h2>{continent.name} ({continent.code})</h2>
           {continent.countries.map((country) => (
             <div key={country.code} style={{ paddingLeft: '1rem' }}>
-              <p><strong>國家：</strong>{country.name} ({country.code})</p>
-              <p><strong>首都：</strong>{country.capital}</p>
-              <p><strong>語言：</strong>{country.languages.map((lang) => lang.name).join(', ')}</p>
-              <p><strong>州/省：</strong>{country.states.map((state) => state.name).join(', ') || '無資料'}</p>
+              <p><strong>Country：</strong>{country.name} ({country.code})</p>
+              <p><strong>Capital：</strong>{country.capital}</p>
+              <p><strong>Language：</strong>{country.languages.map((lang) => lang.name).join(', ')}</p>
+              <p><strong>Provience：</strong>{country.states.map((state) => state.name).join(', ') || '無資料'}</p>
               <hr />
             </div>
           ))}
